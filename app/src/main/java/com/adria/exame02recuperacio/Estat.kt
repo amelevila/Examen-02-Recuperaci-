@@ -1,0 +1,7 @@
+package com.adria.exame02recuperacio
+
+sealed class Estat(val nom: String) {
+    object PerLlegir : Estat("Per llegir")
+    object Llegint : Estat("Llegint")
+    object Llegit : Estat("Llegit")
+}
