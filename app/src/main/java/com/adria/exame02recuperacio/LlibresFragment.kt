@@ -34,14 +34,26 @@ class LlibresFragment : Fragment() {
         recyclerView = view.findViewById(R.id.recyclerview)
         chipGroup = view.findViewById(R.id.chipgroup)
 
+        setupAdapter()
         setupRecyclerView()
         setupChips()
         setupToolbarBehavior()
     }
 
-    private fun setupRecyclerView() {
-        adapter = LlibresAdapter()
+    private fun setupAdapter() {
+        adapter = LlibresAdapter({ llibre ->
+            val bundle = Bundle().apply { putInt("llibre_id", llibre.id) }
+            val fragment = EditarLlibreFragment()
+            fragment.arguments = bundle
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, fragment)
+                .addToBackStack(null)
+                .commit()
+        })
         adapter.setLlibres(LlibresRepository.llibres)
+    }
+
+    private fun setupRecyclerView() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
     }

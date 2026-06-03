@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class LlibresAdapter : RecyclerView.Adapter<LlibreViewHolder>() {
+class LlibresAdapter(private val onClickLlibre: (Llibre) -> Unit) : RecyclerView.Adapter<LlibreViewHolder>() {
 
     private var llibres = listOf<Llibre>()
 
