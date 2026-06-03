@@ -23,6 +23,7 @@ class LlibresAdapter(private val onClickLlibre: (Llibre) -> Unit) : RecyclerView
 
     override fun onBindViewHolder(holder: LlibreViewHolder, position: Int) {
         holder.renderitza(llibres[position])
+        holder.itemView.setOnClickListener { onClickLlibre(llibres[position]) }
     }
 
 }
